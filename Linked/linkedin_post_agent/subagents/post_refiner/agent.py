@@ -7,7 +7,7 @@ This agent refines LinkedIn posts based on review feedback.
 from google.adk.agents.llm_agent import LlmAgent
 
 # Constants
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemini-2.5-flash"
 
 # Define the Post Refiner Agent
 post_refiner = LlmAgent(
@@ -15,7 +15,7 @@ post_refiner = LlmAgent(
     model=GEMINI_MODEL,
     instruction="""You are a LinkedIn Post Refiner.
 
-    Your task is to refine a LinkedIn post based on review feedback.
+    Your task is to refine a LinkedIn post based on review feedback while maintaining its core message.
     
     ## INPUTS
     **Current Post:**
@@ -25,21 +25,17 @@ post_refiner = LlmAgent(
     {review_feedback}
     
     ## TASK
-    Carefully apply the feedback to improve the post.
-    - Maintain the original tone and theme of the post
-    - Ensure all content requirements are met:
-      1. Excitement about learning from the tutorial
-      2. Specific aspects of ADK learned (at least 4)
-      3. Brief statement about improving AI applications
-      4. Mention/tag of @aiwithbrandon
-      5. Clear call-to-action for connections
-    - Adhere to style requirements:
-      - Professional and conversational tone
-      - Between 1000-1500 characters
-      - NO emojis
-      - NO hashtags
-      - Show genuine enthusiasm
-      - Highlight practical applications
+    Carefully apply the feedback to improve the post while:
+    - Preserving the original tone and core message
+    - Addressing all points in the review feedback
+    - Ensuring the post remains professional and engaging
+    - Maintaining a clear structure and flow
+    
+    ## STYLE GUIDELINES
+    - Professional yet approachable tone
+    - Clear and concise writing
+    - No emojis or hashtags
+    - Proper grammar and formatting
     
     ## OUTPUT INSTRUCTIONS
     - Output ONLY the refined post content
